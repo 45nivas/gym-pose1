@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gym Workout Choices</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            background-image: url('https://scontent-maa2-1.xx.fbcdn.net/v/t39.30808-6/438198216_1131700541303502_6038896452515859840_n.jpg?stp=dst-jpg_p526x296&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B-h9u1I0FG0Ab7iAg1e&_nc_ht=scontent-maa2-1.xx&oh=00_AfDDEQKJtoUy5phGxLnVNmz5Uvob3ARNsbOMVtXPaDB0nQ&oe=662AE546');
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center; /* Centers the background image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        /* Header styles */
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #e91e63;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+
+        /* Image styles */
+        img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px; /* Increased size */
+            height: auto;
+            border-radius: 10%; /* Optional: add border radius for a rounded appearance */
+        }
+
+        /* Paragraph styles */
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            letter-spacing: 1.2px;
+        }
+
+        /* Workout options styles */
+        .workout-options {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            background-color: white; /* Light gray background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Button styles */
+        button {
+            margin: 10px 0;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #0097a7;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Anchor styles */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Woxsen.png" alt="Fitness Logo">
+
+    <header>
+        <h2>Welcome, Beast!</h2>
+    </header>
+
+    <p>What workout do you want to choose?</p>
+
+    <div class="workout-options">
+        <a href="/bicep_feed" title="Keep your elbows close to your body and lift weights smoothly.">
+            <button>Bicep</button>
+        </a>
+        <a href="/squat_feed" title="Keep your back straight, and lower your body as if sitting on a chair.">
+            <button>Squats</button>
+        </a>
+        <a href="/pushup_feed" title="Keep your body in a straight line from head to heels, and lower yourself with control.">
+            <button>Push-ups</button>
+        </a>
+        <a href="/sideraises_feed" title="Perform Shoulder Press: Lift Weights Overhead Steadily and Smoothly.">
+            <button>Shoulder Press</button>
+        </a>
+        <a href="/hammer_feed" title="Curl the weights while keeping your thumbs facing up.">
+            <button>Hammer Curls</button>
+        </a>
+    </div>
+</body>
+
+</html>

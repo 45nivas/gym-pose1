@@ -1,0 +1,291 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gym Workout Login</title>
+        <style>
+            body {
+                background-image: url(https://i.pinimg.com/564x/47/c3/25/47c325c36471dcb5fe47639a7fb9dff6.jpg);
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                position: relative;
+            }
+
+            .background-container {
+                background-image: url(https://i.pinimg.com/564x/bb/38/30/bb3830b4faf578171612291df10f2770.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+
+            .login-container {
+                background-color: #FF474D;
+                padding: 50px;
+                border-radius: 5px;
+                max-width: 300px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            .login-container h2 {
+                text-align: center;
+                margin-top: 0;
+            }
+
+            .input-group {
+                margin-bottom: 20px;
+            }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .btn-login {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .btn-login:hover {
+                background-color: #0056b3;
+            }
+
+            .top-right-image {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                width: 100px;
+                height: auto; 
+                z-index: 2;
+            }
+
+            /* Modal CSS */
+            .modal {
+                display: none; 
+                position: fixed; 
+                z-index: 1; 
+                left: 0;
+                top: 0;
+                width: 100%; 
+                height: 100%; 
+                overflow: auto; 
+                background-color: rgb(0,0,0); 
+                background-color: rgba(0,0,0,0.4); 
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto; 
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; 
+            }
+
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+                position: relative;
+            }
+
+            .avatar {
+                width: 100px;
+                border-radius: 50%;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            span.psw {
+                float: right;
+                padding-top: 16px;
+            }
+
+            .modal-content form {
+                width: 100%;
+            }
+
+            @media screen and (max-width: 600px) {
+                .modal-content {
+                    width: 100%;
+                }
+            }
+
+            .cancelbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+            }
+
+            .cancelbtn:hover,
+            .cancelbtn:focus {
+                background-color: #ff0b0b;
+            }
+
+            .login-btn {
+                width: 100%;
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .login-btn:hover {
+                background-color: #45a049;
+            }
+
+            .container input[type=text],
+            .container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            .container input[type=text]:focus,
+            .container input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            .signin {
+                background-color: #f1f1f1;
+                text-align: center;
+            }
+
+            .signin a {
+                float: right;
+                padding-top: 16px;
+            }
+
+            .modal-content form input[type="button"],
+            .modal-content form button[type="button"],
+            .cancelbtn {
+                background-color: #45a049;
+                width: 30%;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Woxsen.png" alt="Top Right Image" class="top-right-image">
+    
+        <div class="login-container">
+            <h2>Welcome to Virtual gym</h2>
+            <form  action="{{ url_for('handle_login') }}" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-login">Enter to fitness world</button>
+                {% if error %}
+                    <div style="color: black;">{{ error }}</div>
+                {% endif %}
+            </form>
+        </div>
+   
+
+        <!-- Modal Login Form -->
+        <div id="id01" class="modal">
+            <form class="modal-content animate" id="loginForm" method="post">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" id="uname" value="nivas" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <!-- Pre-filling password -->
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" value="12345678" required>
+                    <button type="button" onclick="login()">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </form>
+        </div>
+        <!-- End of Modal -->
+
+        <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get the entered username and password
+        var enteredUsername = document.getElementById("username").value;
+        var enteredPassword = document.getElementById("password").value;
+
+        // Check if username and password are correct
+        if (enteredUsername === "nivas" && enteredPassword === "12345678") {
+            // Redirect to the workout selection page if credentials are correct
+            window.location.href = "./afterlogin.html"; // Use a relative path to afterlogin.html
+        } else {
+            // Show a message near the login button for incorrect details
+            document.getElementById("login-error").textContent = "Incorrect details, please try again.";
+        }
+    });
+
+
+            function login() {
+                // Redirect to a new page where the video feed is displayed
+                window.location.href = "/video_feed";
+            }
+        </script>
+    </body>
+    </html>
